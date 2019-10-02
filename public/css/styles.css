@@ -1,0 +1,12 @@
+.menu {
+  border : solid 1px black;
+  background : #fff !important;
+}
+
+.to-top {
+  position: fixed;
+  bottom : 20%;
+  right : 5%;
+  margin : 1%;
+  background: rgba(0,0,0,0.7);
+}
