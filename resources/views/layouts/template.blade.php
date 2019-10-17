@@ -20,6 +20,15 @@
     <div class="uk-offcanvas-bar uk-padding-small">
 
         <ul class="uk-nav uk-nav-default uk-margin-top">
+          @if(Auth::check())
+          <li class="uk-nav-header">Admin</li>
+          <li class="uk-active uk-margin-remove" ><a href="{{url('/admin/pages')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : check ; "></span>  Pages</a></li>
+          <li class="uk-active uk-margin-remove" ><a href="{{url('/admin/slideshow')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : check ; "></span>  Banniere</a></li>
+          <li class="uk-active uk-margin-remove" ><a href="{{url('/admin/settings')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : check ; "></span>  Parametres</a></li>
+          <li class="uk-active uk-margin-remove" ><a  class="uk-button uk-text-left logout"><span uk-icon="icon : check ; "></span>  Logout</a></li>
+          <li class="uk-nav-divider"></li>
+          @endif
+
             <li class="uk-active uk-margin-remove" ><a href="{{url('/')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : home ; "></span>  Acceuil</a></li>
             <li class="uk-active uk-margin-remove" ><a href="{{url('/about-us')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : info ; "></span>  A Propos</a></li>
             <li class="uk-active uk-margin-remove" ><a href="{{url('/contact-us')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : question ; "></span>  Contactez Nous</a></li>
@@ -62,7 +71,10 @@
                         <li class="uk-active"><a href="{{url('/admin/pages')}}">Pages</a></li>
                         <li class="uk-active"><a href="{{url('/admin/slideshow')}}">Bannier</a></li>
                         <li class="uk-active"><a href="{{url('/admin/settings')}}">Parametres</a></li>
+                        <li class="uk-active"><a class="logout">Logout</a></li>
                     </ul>
+                    {!!Form::open(['url'=>'/logout','id'=>'logout-form'])!!}
+                    {!!Form::close()!!}
                 </div>
             </li>
           @endif
@@ -110,6 +122,11 @@
             $(".to-top").hide(300)
           }
         })
+
+        $(".logout").on("click",function () {
+          $("#logout-form").submit()
+        })
+
       })
     </script>
     @yield('scripts')
