@@ -35,7 +35,7 @@ Abadrec Ingenierie Sarl
     <p class="uk-margin">
       {!!Illuminate\Support\Str::limit($whoWeAre->content,500,'...')!!}
     </p>
-    <a href="{{url('about-us')}}" class="uk-button uk-button-default uk-border-rounded" style="background :rgba(255,200,0,1)">En savoir plus</a>
+    <a href="{{url('about-us')}}" class="uk-button uk-button-default uk-border-rounded uk-width-1-1@s uk-width-1-5@m" style="background :rgba(255,200,0,1)">En savoir plus</a>
   </div>
 </div>
 <!-- Nos services -->
@@ -47,7 +47,7 @@ Abadrec Ingenierie Sarl
 </div>
   <div class="uk-container uk-container-large">
 
-    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-text-center" uk-grid="parallax: 10">
+    <div class="uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-4@l uk-text-center" uk-grid="parallax: 10">
       <div uk-scrollspy="cls: uk-animation-slide-left;">
         <div class="uk-card uk-border-rounded">
           <div class="uk-card-media-top">
@@ -102,7 +102,7 @@ Abadrec Ingenierie Sarl
         <p class="uk-text-lead" uk-parallax="opacity: 1,1; y: 100,0; scale: 0.5,1; viewport: 0.5;">
           Faites appel a notre entreprise , nos Equipes d'ingenieurs sauront vous apporter les solutions necessaires!
         </p>
-        <a href="{{url('/contact-us')}}" class="uk-button uk-button-default uk-border-rounded" style="background :rgba(255,200,0,1);color : #000;">Contactez Nous</a>
+        <a href="{{url('/contact-us')}}" class="uk-button uk-button-default uk-border-rounded uk-width-1-1@s uk-width-1-2@m" style="background :rgba(255,200,0,1);color : #000;">Contactez Nous</a>
     </div>
 </div>
 @endsection

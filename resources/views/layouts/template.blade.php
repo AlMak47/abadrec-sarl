@@ -15,14 +15,44 @@
   </head>
   <body>
     <!-- nabvar -->
+    <!-- off canvas -->
+    <div id="mobile-menu" uk-offcanvas="overlay: true ; flip : true ; mode : slide ">
+    <div class="uk-offcanvas-bar uk-padding-small">
+
+        <ul class="uk-nav uk-nav-default uk-margin-top">
+            <li class="uk-active uk-margin-remove" ><a href="{{url('/')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : home ; "></span>  Acceuil</a></li>
+            <li class="uk-active uk-margin-remove" ><a href="{{url('/about-us')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : info ; "></span>  A Propos</a></li>
+            <li class="uk-active uk-margin-remove" ><a href="{{url('/contact-us')}}" class="uk-button uk-text-left uk"><span uk-icon="icon : question ; "></span>  Contactez Nous</a></li>
+        </ul>
+        <hr class="uk-divider-small">
+        <div class="uk-text-meta uk-text-small">
+          <span uk-icon="icon :receiver"></span> <span> 666 000 000</span>,
+          <span uk-icon="icon :mail"></span> <span>infos@abadrec.com</span>
+        </div>
+        <h4 class="uk-heading-divider uk-text-center"><span uk-icon="icon :social"></span> Suivez Nous</h4>
+        <div class="uk-text-center uk-paddin-small">
+          <a href="#" class="uk-button-default uk-padding-small uk-border-rounded uk-box-shadow-small"><span uk-icon="facebook"></span></a>
+          <a href="#" class="uk-button-default uk-padding-small uk-border-rounded uk-box-shadow-small"><span uk-icon="twitter"></span></a>
+          <a href="#" class="uk-button-default uk-padding-small uk-border-rounded uk-box-shadow-small"><span uk-icon="instagram"></span></a>
+        </div>
+        <hr class="uk-divider-small">
+        <p>Copyright &copy; Designed by <a href="https://smartechguinee.com">Smartech</a> </p>
+    </div>
+</div>
+    <!-- // -->
     <div class="uk-container">
 
-
     <nav class="uk-navbar-container uk-padding-remove uk-box-shadow-small" uk-sticky style="background :#fff" uk-navbar="mode:click">
+
       <div class="uk-navbar-left">
-        <a href="{{url('/')}}" class="uk-logo"><img src="{{asset('image/logo-3.png')}}" class="uk-margin-remove" alt=""> <span class="uk-text-small uk-text-bold">ABADREC INGENIERIE</span> </a>
+        <a href="{{url('/')}}" class="uk-logo"><img src="{{asset('image/logo-3.png')}}" class="uk-margin-remove" alt=""> <span class="uk-text-small uk-text-bold uk-visible@m">ABADREC INGENIERIE</span> </a>
       </div>
-      <div class="uk-navbar-center">
+      <div class="uk-navbar-right uk-hidden@l">
+        <a class="uk-navbar-toggle" uk-toggle="target: #mobile-menu">
+            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+        </a>
+    </div>
+      <div class="uk-navbar-center uk-visible@l">
         <ul class="uk-navbar-nav">
           @if(Auth::check())
           <li>
@@ -41,7 +71,7 @@
           <li><a href="{{url('/contact-us')}}">Contactez Nous</a> </li>
         </ul>
       </div>
-        <div class="uk-navbar-right">
+        <div class="uk-navbar-right uk-visible@s">
             <!-- social network -->
             <ul class="uk-navbar-nav">
               <!-- <li><a href="#" class="uk-button uk-padding-small" style="background : darkblue ; color : #fff "> <span uk-icon="icon : facebook"></span> </a> </li> -->
