@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pages;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use App\Banniere;
 use App\Exceptions\Handler;
 
@@ -41,9 +42,21 @@ class HomeController extends Controller
 
 
     public function manageSlideshow() {
-      return view('admin.page-slideshow');
+      $slideshows = Banniere::all();
+      return view('admin.page-slideshow')->withSlides($slideshows);
+    }
+    // modifier le mote de passe
+    public function settings() {
+      return view("admin.settings");
     }
 
+    public function changePassword(Request $request) {
+      $validation = $request->validate([
+        'old_password'  =>  'required|string',
+        'new_password'  =>  'required|confirmed'
+      ]);
+      dd($request);
+    }
     public function addPage(Request $request) {
       $validation = $request->validate([
         'titre' =>  'required|string',
@@ -110,6 +123,50 @@ class HomeController extends Controller
         }
       } catch (Handler $e) {
         return back()->with("_errors",$e->getMessage());
+      }
+    }
+
+    public function editSlide($slug) {
+      $edit = Banniere::find($slug);
+      return view('admin/edit-slide')->withEditable($edit);
+    }
+
+    public function makeEditSlide(Request $request) {
+      $validation = $request->validate([
+        'slug'  =>  'required|exists:bannieres,slug',
+        'titre' =>  'required|string',
+        'contenu' =>  'string'
+      ]);
+      $editable = Banniere::find($request->input('slug'));
+      $editable->slug = Str::slug($request->input('titre'),'-');
+      $editable->titre = $request->input('titre');
+      $editable->contenu = $request->input('contenu');
+
+      if($request->hasFile('image')) {
+        //on modifie l'image
+        if(File::exists('slideshow/'.$editable->image)) {
+          if(File::delete('slideshow/'.$editable->image)) {
+            // enregistrement de la nouvelle image
+            if($request->file('image')->move(config('slideshow.path'),$editable->image)) {
+              $editable->save();
+              return redirect('/admin/slideshow/edit/'.$editable->slug)->withSuccess("Success!");
+            } else {
+              return redirect("/admin/slideshow/edit/".$editable->slug)->with("_errors","Error");
+            }
+          }
+        } else {
+          // le fichier n'existe pas dans le repertoire
+          if($request->file('image')->move(config('slideshow.path'),$editable->image)) {
+            $editable->save();
+            return redirect('/admin/slideshow/edit/'.$editable->slug)->withSuccess("Success!");
+          } else {
+            return redirect("/admin/slideshow/edit/".$editable->slug)->with("_errors","Error");
+          }
+        }
+      } else {
+        // on ne modifie pas l'image
+        $editable->save();
+        return redirect('/admin/slideshow/edit/'.$editable->slug)->withSuccess("Success!");
       }
     }
 }

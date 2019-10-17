@@ -24,7 +24,7 @@ Manage page
     @endforeach
     @endif
     <ul uk-accordion>
-        <li class="uk-close">
+        <!-- <li class="uk-close">
             <a class="uk-accordion-title" href="#">Ajouter une page</a>
             <div class="uk-accordion-content">
               {!!Form::open(['url'=>'admin/pages/add','id'=>'form_page'])!!}
@@ -38,8 +38,8 @@ Manage page
               {!!Form::submit('Envoyer',['class'=>'uk-button uk-button-default uk-border-rounded uk-margin-small'])!!}
               {!!Form::close()!!}
             </div>
-        </li>
-        <li>
+        </li> -->
+        <li class="uk-open">
           <a class="uk-accordion-title" href="#">Editer une page</a>
           <div class="uk-accordion-content">
             @if($pages)

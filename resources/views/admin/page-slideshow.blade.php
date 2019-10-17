@@ -40,7 +40,15 @@ Manage Slideshow
         <li>
           <a href="#" class="uk-accordion-title">List Slides</a>
           <div class="uk-accordion-content">
-
+            @if($slides)
+            <ul class="uk-list">
+            @foreach($slides as $slide)
+            <li>
+              <a href="{{url('/admin/slideshow/edit',[$slide->slug])}}">{{$slide->titre}}</a>
+            </li>
+            @endforeach
+          </ul>
+            @endif
           </div>
         </li>
     </ul>

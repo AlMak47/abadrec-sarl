@@ -20,7 +20,7 @@
 
     <nav class="uk-navbar-container uk-padding-remove uk-box-shadow-small" uk-sticky style="background :#fff" uk-navbar="mode:click">
       <div class="uk-navbar-left">
-        <a href="{{url('/')}}" class="uk-logo"><img src="{{asset('image/logo-3.png')}}" class="uk-margin-remove" alt=""> <span class="uk-text-small">ABADREC INGENIERIE</span> </a>
+        <a href="{{url('/')}}" class="uk-logo"><img src="{{asset('image/logo-3.png')}}" class="uk-margin-remove" alt=""> <span class="uk-text-small uk-text-bold">ABADREC INGENIERIE</span> </a>
       </div>
       <div class="uk-navbar-center">
         <ul class="uk-navbar-nav">
@@ -31,6 +31,7 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-active"><a href="{{url('/admin/pages')}}">Pages</a></li>
                         <li class="uk-active"><a href="{{url('/admin/slideshow')}}">Bannier</a></li>
+                        <li class="uk-active"><a href="{{url('/admin/settings')}}">Parametres</a></li>
                     </ul>
                 </div>
             </li>

@@ -6,7 +6,7 @@ Abadrec Ingenierie Sarl
 
 @section('content')
 <!-- banniere -->
-<div class="uk-position-relative uk-visible-toggle uk-margin-remove" uk-slideshow="animation: push ; max-height : 500">
+<div class="uk-position-relative uk-visible-toggle uk-margin-remove" uk-slideshow="autoplay:true;animation: push ; max-height : 500;autoplay-interval : 3000;pause-on-hover:false">
     <ul class="uk-slideshow-items">
       @if($slideShow)
       @foreach($slideShow as $slide)
